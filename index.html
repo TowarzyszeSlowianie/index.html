@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            background: url('pole.jpg') no-repeat center center fixed;
+            background: url('Z:/Strona/pole.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             font-family: 'Uncial Antiqua', cursive;
@@ -259,6 +259,14 @@
             color: #f39c12;
         }
 
+        /* Nowe style dla nagłówka artykułów */
+        #articles h2 {
+            font-size: 40px; /* Zwiększenie rozmiaru czcionki nagłówka */
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px #000;
+        }
     </style>
 </head>
 <body>
@@ -344,91 +352,13 @@
         </div>
         <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
         <div class="social-icons">
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="mailto:example@mail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a>
+            <a href="https://www.pinterest.com" target="_blank" class="fab fa-pinterest"></a>
+            <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook"></a>
+            <a href="https://www.youtube.com" target="_blank" class="fab fa-youtube"></a>
+            <a href="mailto:example@example.com" target="_blank" class="fas fa-envelope"></a>
         </div>
     </footer>
-
-    <script>
-        const monthNames = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
-        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-        const holidays = {
-            1: {1: "Nowy Rok"},
-            5: {1: "Święto Pracy", 3: "Święto Konstytucji"},
-            8: {15: "Wniebowzięcie Najświętszej Maryi Panny"},
-            11: {1: "Wszystkich Świętych", 11: "Narodowe Święto Niepodległości"},
-            12: {25: "Boże Narodzenie"}
-        };
-
-        let currentMonth = new Date().getMonth();
-        let currentYear = new Date().getFullYear();
-
-        const monthYear = document.getElementById('month-year');
-        const daysContainer = document.getElementById('days');
-
-        function renderCalendar() {
-            monthYear.innerText = `${monthNames[currentMonth]} ${currentYear}`;
-            daysContainer.innerHTML = '';
-
-            let firstDay = new Date(currentYear, currentMonth, 1).getDay();
-            let totalDays = daysInMonth[currentMonth];
-
-            if (currentMonth === 1 && currentYear % 4 === 0 && (currentYear % 100 !== 0 || currentYear % 400 === 0)) {
-                totalDays = 29; // Leap year check
-            }
-
-            for (let i = 0; i < firstDay; i++) {
-                let emptyDiv = document.createElement('div');
-                emptyDiv.classList.add('calendar-day');
-                daysContainer.appendChild(emptyDiv);
-            }
-
-            for (let day = 1; day <= totalDays; day++) {
-                let dayDiv = document.createElement('div');
-                dayDiv.classList.add('calendar-day');
-                dayDiv.innerText = day;
-
-                let date = new Date(currentYear, currentMonth, day);
-                if (date.getDay() === 0 || date.getDay() === 6) {
-                    dayDiv.classList.add('weekend');
-                }
-
-                if (holidays[currentMonth + 1] && holidays[currentMonth + 1][day]) {
-                    dayDiv.classList.add('holiday');
-                    let holidayBox = document.createElement('div');
-                    holidayBox.classList.add('holiday-box');
-                    holidayBox.innerText = holidays[currentMonth + 1][day];
-                    dayDiv.appendChild(holidayBox);
-                }
-
-                daysContainer.appendChild(dayDiv);
-            }
-        }
-
-        document.getElementById('prev-month').addEventListener('click', () => {
-            currentMonth--;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            renderCalendar();
-        });
-
-        document.getElementById('next-month').addEventListener('click', () => {
-            currentMonth++;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            }
-            renderCalendar();
-        });
-
-        renderCalendar();
-    </script>
 
 </body>
 </html>
