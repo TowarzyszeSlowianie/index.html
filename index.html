@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url('pole.jpg') no-repeat center center fixed;
+            background: url('Z:/Strona/pole.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             font-family: 'Uncial Antiqua', cursive;
@@ -53,6 +53,8 @@
             cursor: pointer;
             font-size: 22px;
             transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            color: #fff;
         }
 
         .theme:hover {
@@ -219,6 +221,42 @@
         .character p {
             font-size: 14px;
         }
+
+        /* Social media icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            font-size: 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f39c12;
+        }
+
+        .footer-links {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+
     </style>
 </head>
 <body>
@@ -228,12 +266,12 @@
     </header>
 
     <div id="theme-container">
-        <div class="theme">Historia</div>
-        <div class="theme">Mitologia</div>
-        <div class="theme">Obrzędy</div>
-        <div class="theme">Rzemiosło</div>
-        <div class="theme">Bitwy</div>
-        <div class="theme">Postacie</div>
+        <a href="bitwy.html" class="theme">Historia</a>
+        <a href="bitwy.html" class="theme">Mitologia</a>
+        <a href="bitwy.html" class="theme">Obrzędy</a>
+        <a href="bitwy.html" class="theme">Rzemiosło</a>
+        <a href="bitwy.html" class="theme">Bitwy</a>
+        <a href="bitwy.html" class="theme">Postacie</a>
     </div>
 
     <section id="calendar">
@@ -297,7 +335,17 @@
     </section>
 
     <footer>
+        <div class="footer-links">
+            <a href="regulamin.html">Regulamin</a> | <a href="privacy.html">Polityka Prywatności</a>
+        </div>
         <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank">📸</a>
+            <a href="https://pinterest.com" target="_blank">📌</a>
+            <a href="https://facebook.com" target="_blank">📘</a>
+            <a href="https://youtube.com" target="_blank">🎥</a>
+            <a href="mailto:example@mail.com">📧</a>
+        </div>
     </footer>
 
     <script>
