@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitwa pod Cedynią - Towarzysze Słowianie</title>
+    <title>Towarzysze Słowianie</title>
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
     <style>
         body {
@@ -13,6 +13,9 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         header {
@@ -21,6 +24,7 @@
             text-align: center;
             border-bottom: 5px solid #333;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            width: 100%;
         }
 
         header h1 {
@@ -32,33 +36,186 @@
             margin: 0;
         }
 
-        .article-content {
-            padding: 40px;
-            margin: 30px;
+        #theme-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .theme {
             background: #222;
+            padding: 20px 40px;
             border-radius: 12px;
             box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            font-size: 22px;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
-        .article-content h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
+        .theme:hover {
+            background-color: #444;
+            transform: scale(1.1);
         }
 
-        .article-content p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        footer {
+        #calendar {
             background: #111;
+            padding: 20px;
+            border: 3px solid #333;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            color: #fff;
+            width: 80%;
+            font-family: 'Uncial Antiqua', cursive;
+        }
+
+        #calendar h2 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-header button {
+            background-color: #333;
+            color: #fff;
+            border: none;
             padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .calendar-header button:hover {
+            background-color: #555;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-gap: 10px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .calendar-day {
+            padding: 15px;
+            background: #222;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .calendar-day:hover {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+
+        .calendar-day.disabled {
+            background: #333;
+            color: #555;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.active {
+            background: #990000;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .calendar-day.weekend {
+            background: #444;
+        }
+
+        .calendar-day.holiday {
+            background: #800080;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .holiday-box {
+            background: #800080;
+            color: white;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 14px;
+            display: none;
+            position: absolute;
+            width: 200px;
+            z-index: 100;
+        }
+
+        .calendar-day.holiday:hover .holiday-box {
+            display: block;
+        }
+
+        #articles {
+            margin-top: 30px;
+            width: 80%;
             text-align: center;
             color: #fff;
         }
 
-        footer p {
+        .article {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #222;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .article:hover {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+
+        .article h3 {
+            font-size: 24px;
+        }
+
+        .article p {
+            font-size: 16px;
+        }
+
+        #characters {
+            margin-top: 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .characters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .character {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .character h4 {
+            font-size: 20px;
+        }
+
+        .character p {
             font-size: 14px;
         }
     </style>
@@ -69,18 +226,148 @@
         <h1>Towarzysze Słowianie</h1>
     </header>
 
-    <div class="article-content">
-        <h2>Bitwa pod Cedynią (972 rok)</h2>
-        <p>Bitwa pod Cedynią miała miejsce 24 czerwca 972 roku i jest jednym z kluczowych wydarzeń w historii Polski wczesnośredniowiecznej. W bitwie tej starły się siły Mieszka I, księcia Polski, z armią niemiecką pod dowództwem margrabiego Hodona. Była to pierwsza wielka konfrontacja wojskowa, która miała na celu utrzymanie niezależności Polski przed ekspansją niemiecką...</p>
-
-        <p>Bitwa była kluczowa dla dalszego rozwoju państwa polskiego. Mimo przewagi liczebnej Niemców, Mieszko I odniósł zdecydowane zwycięstwo. Zatrzymało to plany niemieckiej ekspansji na wschód i umożliwiło Mieszkowi I umocnienie władzy w Polsce...</p>
-
-        <p>Pokonanie niemieckiej armii było także wielkim symbolem dla późniejszych pokoleń Polaków, którzy brali przykład z tej bohaterskiej obrony swojej niepodległości...</p>
+    <div id="theme-container">
+        <div class="theme">Historia</div>
+        <div class="theme">Mitologia</div>
+        <div class="theme">Obrzędy</div>
+        <div class="theme">Rzemiosło</div>
+        <div class="theme">Bitwy</div>
+        <div class="theme">Postacie</div>
     </div>
+
+    <section id="calendar">
+        <h2>Kalendarz Wydarzeń</h2>
+
+        <div class="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <h3 id="month-year"></h3>
+            <button id="next-month">&gt;</button>
+        </div>
+
+        <div class="calendar-grid">
+            <div class="calendar-day-name">Pon</div>
+            <div class="calendar-day-name">Wt</div>
+            <div class="calendar-day-name">Śr</div>
+            <div class="calendar-day-name">Cz</div>
+            <div class="calendar-day-name">Pt</div>
+            <div class="calendar-day-name">Sb</div>
+            <div class="calendar-day-name">Nd</div>
+        </div>
+
+        <div class="calendar-grid" id="days"></div>
+    </section>
+
+    <section id="articles">
+        <div class="article">
+            <h3>Bitwa pod Cedynią</h3>
+            <p>Bitwa pod Cedynią odbyła się w 972 roku i była jednym z ważniejszych starć w historii Polski. Przeciwko wojskom niemieckim, dowodzonym przez Ottona I, stanął książę Mieszko I, który zdołał zwyciężyć, co miało kluczowe znaczenie dla utrzymania niepodległości Polski w czasach wczesnośredniowiecznych.</p>
+        </div>
+        <div class="article">
+            <h3>Bitwa pod Grunwaldem</h3>
+            <p>Bitwa pod Grunwaldem miała miejsce w 1410 roku. Była jednym z największych starć średniowiecznej Europy, w którym połączone siły polsko-litewskie pokonały Krzyżaków. Bitwa miała ogromne znaczenie strategiczne i polityczne dla Polski i Litwy, dając im przewagę nad zakonem krzyżackim.</p>
+        </div>
+        <div class="article">
+            <h3>Bitwa pod Wiedniem</h3>
+            <p>Bitwa pod Wiedniem miała miejsce w 1683 roku. Była kluczowym momentem w historii Europy, kiedy to armia polska pod dowództwem Jana III Sobieskiego pokonała wojska Imperium Osmańskiego, ratując Wiedeń i zatrzymując rozprzestrzenianie się turkijskiej dominacji w Europie Środkowej.</p>
+        </div>
+    </section>
+
+    <section id="characters">
+        <h2>Postacie</h2>
+
+        <div class="characters">
+            <div class="character">
+                <h4>Mieszko I</h4>
+                <p>Pierwszy historyczny władca Polski, który przyjął chrzest w 966 roku, ustanawiając państwo polskie jako chrześcijańskie.</p>
+            </div>
+            <div class="character">
+                <h4>Perun</h4>
+                <p>Bóg piorunów i wojny, jeden z najważniejszych bogów słowiańskich, symbolizujący siłę i męstwo.</p>
+            </div>
+            <div class="character">
+                <h4>Veles</h4>
+                <p>Bóg zaświatów, magii, zwierząt i obfitości. Często przedstawiany jako przeciwnik Peruna.</p>
+            </div>
+            <div class="character">
+                <h4>Jan III Sobieski</h4>
+                <p>Król Polski, bohater bitwy pod Wiedniem, znany z mężnego dowodzenia i obrony Europy przed Imperium Osmańskim.</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
     </footer>
+
+    <script>
+        const monthNames = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        const holidays = {
+            2: { 21: 'Jare Święto' },
+            5: { 23: 'Noc Kupały' },
+            6: { 6: 'Święto Peruna' },
+            8: { 26: 'Święto Peruna' },
+            9: { 23: 'Dożynki' },
+            11: { 2: 'Dziady Jesienne' },
+            3: { 21: 'Jare Święto' },
+            12: { 21: 'Gody, Kres, Stado, Kolęda' }
+        };
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        const monthYearDisplay = document.getElementById('month-year');
+        const daysContainer = document.getElementById('days');
+
+        function updateCalendar() {
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const lastDay = daysInMonth[currentMonth];
+            daysContainer.innerHTML = '';
+            monthYearDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+            for (let i = 1; i < firstDay; i++) {
+                daysContainer.innerHTML += '<div class="calendar-day disabled"></div>';
+            }
+
+            for (let day = 1; day <= lastDay; day++) {
+                let className = 'calendar-day';
+                if (day === 1 || day === 7) className += ' weekend';
+                if (holidays[currentMonth] && holidays[currentMonth][day]) {
+                    className += ' holiday';
+                }
+
+                let holidayContent = '';
+                if (holidays[currentMonth] && holidays[currentMonth][day]) {
+                    holidayContent = `<div class="holiday-box">${holidays[currentMonth][day]}</div>`;
+                }
+
+                daysContainer.innerHTML += `<div class="${className}">${day}${holidayContent}</div>`;
+            }
+        }
+
+        document.getElementById('prev-month').addEventListener('click', () => {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else {
+                currentMonth--;
+            }
+            updateCalendar();
+        });
+
+        document.getElementById('next-month').addEventListener('click', () => {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else {
+                currentMonth++;
+            }
+            updateCalendar();
+        });
+
+        updateCalendar();
+    </script>
 
 </body>
 </html>
