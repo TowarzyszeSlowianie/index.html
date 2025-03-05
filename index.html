@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Towarzysze Słowianie</title>
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <!-- Link do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             background: url('Z:/Strona/pole.jpg') no-repeat center center fixed;
@@ -340,11 +342,11 @@
         </div>
         <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
         <div class="social-icons">
-            <a href="https://instagram.com" target="_blank">📸</a>
-            <a href="https://pinterest.com" target="_blank">📌</a>
-            <a href="https://facebook.com" target="_blank">📘</a>
-            <a href="https://youtube.com" target="_blank">🎥</a>
-            <a href="mailto:example@mail.com">📧</a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:example@mail.com"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
 
@@ -356,66 +358,73 @@
             2: { 21: 'Jare Święto' },
             5: { 23: 'Noc Kupały' },
             6: { 6: 'Święto Peruna' },
-            8: { 26: 'Święto Peruna' },
-            9: { 23: 'Dożynki' },
-            11: { 2: 'Dziady Jesienne' },
-            3: { 21: 'Jare Święto' },
-            12: { 21: 'Gody, Kres, Stado, Kolęda' }
+            8: { 1: 'Zakończenie Żniw' }
         };
 
         let currentMonth = new Date().getMonth();
         let currentYear = new Date().getFullYear();
 
-        const monthYearDisplay = document.getElementById('month-year');
+        const monthYear = document.getElementById('month-year');
         const daysContainer = document.getElementById('days');
 
-        function updateCalendar() {
-            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-            const lastDay = daysInMonth[currentMonth];
+        function renderCalendar() {
+            monthYear.innerText = `${monthNames[currentMonth]} ${currentYear}`;
             daysContainer.innerHTML = '';
-            monthYearDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
-            for (let i = 1; i < firstDay; i++) {
-                daysContainer.innerHTML += '<div class="calendar-day disabled"></div>';
+            let firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            let totalDays = daysInMonth[currentMonth];
+
+            if (currentMonth === 1 && currentYear % 4 === 0 && (currentYear % 100 !== 0 || currentYear % 400 === 0)) {
+                totalDays = 29; // Leap year check
             }
 
-            for (let day = 1; day <= lastDay; day++) {
-                let className = 'calendar-day';
-                if (day === 1 || day === 7) className += ' weekend';
-                if (holidays[currentMonth] && holidays[currentMonth][day]) {
-                    className += ' holiday';
+            for (let i = 0; i < firstDay; i++) {
+                let emptyDiv = document.createElement('div');
+                emptyDiv.classList.add('calendar-day');
+                daysContainer.appendChild(emptyDiv);
+            }
+
+            for (let day = 1; day <= totalDays; day++) {
+                let dayDiv = document.createElement('div');
+                dayDiv.classList.add('calendar-day');
+                dayDiv.innerText = day;
+
+                let date = new Date(currentYear, currentMonth, day);
+                if (date.getDay() === 0 || date.getDay() === 6) {
+                    dayDiv.classList.add('weekend');
                 }
 
-                let holidayContent = '';
-                if (holidays[currentMonth] && holidays[currentMonth][day]) {
-                    holidayContent = `<div class="holiday-box">${holidays[currentMonth][day]}</div>`;
+                if (holidays[currentMonth + 1] && holidays[currentMonth + 1][day]) {
+                    dayDiv.classList.add('holiday');
+                    let holidayBox = document.createElement('div');
+                    holidayBox.classList.add('holiday-box');
+                    holidayBox.innerText = holidays[currentMonth + 1][day];
+                    dayDiv.appendChild(holidayBox);
                 }
 
-                daysContainer.innerHTML += `<div class="${className}">${day}${holidayContent}</div>`;
+                daysContainer.appendChild(dayDiv);
             }
         }
 
         document.getElementById('prev-month').addEventListener('click', () => {
-            if (currentMonth === 0) {
+            currentMonth--;
+            if (currentMonth < 0) {
                 currentMonth = 11;
                 currentYear--;
-            } else {
-                currentMonth--;
             }
-            updateCalendar();
+            renderCalendar();
         });
 
         document.getElementById('next-month').addEventListener('click', () => {
-            if (currentMonth === 11) {
+            currentMonth++;
+            if (currentMonth > 11) {
                 currentMonth = 0;
                 currentYear++;
-            } else {
-                currentMonth++;
             }
-            updateCalendar();
+            renderCalendar();
         });
 
-        updateCalendar();
+        renderCalendar();
     </script>
 
 </body>
