@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url('Z:/Strona/pole.jpg') no-repeat center center fixed;
+            background: url('pole.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             font-family: 'Uncial Antiqua', cursive;
@@ -40,26 +40,19 @@
         #theme-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
             margin: 20px 0;
             width: 100%;
-            flex-wrap: wrap;
-            padding: 0 10px;
         }
 
         .theme {
             background: rgba(34, 34, 34, 0.7); /* Semi-transparent background */
-            padding: 15px 30px;
+            padding: 20px 40px;
             border-radius: 12px;
             box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
             cursor: pointer;
-            font-size: 16px;
+            font-size: 22px;
             transition: background-color 0.3s, transform 0.3s;
-            text-decoration: none;
-            color: #fff;
-            text-align: center;
-            flex: 1 1 calc(33.333% - 20px);
-            margin-bottom: 15px;
         }
 
         .theme:hover {
@@ -206,7 +199,7 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 40px;
         }
 
         .character {
@@ -226,79 +219,6 @@
         .character p {
             font-size: 14px;
         }
-
-        /* Mobile adjustments */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 36px;
-            }
-
-            .theme {
-                font-size: 14px;
-                padding: 12px 24px;
-                flex: 1 1 calc(50% - 20px);
-            }
-
-            #calendar {
-                width: 90%;
-            }
-
-            .calendar-header button {
-                font-size: 16px;
-            }
-
-            .article h3 {
-                font-size: 20px;
-            }
-
-            .article p {
-                font-size: 14px;
-            }
-
-            .character h4 {
-                font-size: 18px;
-            }
-
-            .character p {
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 28px;
-            }
-
-            .theme {
-                font-size: 12px;
-                padding: 10px 20px;
-                flex: 1 1 100%;
-            }
-
-            #calendar {
-                width: 100%;
-            }
-
-            .calendar-header button {
-                font-size: 14px;
-            }
-
-            .article h3 {
-                font-size: 18px;
-            }
-
-            .article p {
-                font-size: 12px;
-            }
-
-            .character h4 {
-                font-size: 16px;
-            }
-
-            .character p {
-                font-size: 10px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -308,12 +228,12 @@
     </header>
 
     <div id="theme-container">
-        <a href="bitwy.html" class="theme">Historia</a>
-        <a href="bitwy.html" class="theme">Mitologia</a>
-        <a href="bitwy.html" class="theme">Obrzędy</a>
-        <a href="bitwy.html" class="theme">Rzemiosło</a>
-        <a href="bitwy.html" class="theme">Bitwy</a>
-        <a href="bitwy.html" class="theme">Postacie</a>
+        <div class="theme">Historia</div>
+        <div class="theme">Mitologia</div>
+        <div class="theme">Obrzędy</div>
+        <div class="theme">Rzemiosło</div>
+        <div class="theme">Bitwy</div>
+        <div class="theme">Postacie</div>
     </div>
 
     <section id="calendar">
@@ -381,7 +301,73 @@
     </footer>
 
     <script>
-        // JavaScript code for calendar functionality remains unchanged
+        const monthNames = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        const holidays = {
+            2: { 21: 'Jare Święto' },
+            5: { 23: 'Noc Kupały' },
+            6: { 6: 'Święto Peruna' },
+            8: { 26: 'Święto Peruna' },
+            9: { 23: 'Dożynki' },
+            11: { 2: 'Dziady Jesienne' },
+            3: { 21: 'Jare Święto' },
+            12: { 21: 'Gody, Kres, Stado, Kolęda' }
+        };
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        const monthYearDisplay = document.getElementById('month-year');
+        const daysContainer = document.getElementById('days');
+
+        function updateCalendar() {
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const lastDay = daysInMonth[currentMonth];
+            daysContainer.innerHTML = '';
+            monthYearDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+            for (let i = 1; i < firstDay; i++) {
+                daysContainer.innerHTML += '<div class="calendar-day disabled"></div>';
+            }
+
+            for (let day = 1; day <= lastDay; day++) {
+                let className = 'calendar-day';
+                if (day === 1 || day === 7) className += ' weekend';
+                if (holidays[currentMonth] && holidays[currentMonth][day]) {
+                    className += ' holiday';
+                }
+
+                let holidayContent = '';
+                if (holidays[currentMonth] && holidays[currentMonth][day]) {
+                    holidayContent = `<div class="holiday-box">${holidays[currentMonth][day]}</div>`;
+                }
+
+                daysContainer.innerHTML += `<div class="${className}">${day}${holidayContent}</div>`;
+            }
+        }
+
+        document.getElementById('prev-month').addEventListener('click', () => {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else {
+                currentMonth--;
+            }
+            updateCalendar();
+        });
+
+        document.getElementById('next-month').addEventListener('click', () => {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else {
+                currentMonth++;
+            }
+            updateCalendar();
+        });
+
+        updateCalendar();
     </script>
 
 </body>
