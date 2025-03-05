@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            background: url('pole.jpg') no-repeat center center fixed;
+            background: url('Z:/Strona/pole.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             font-family: 'Uncial Antiqua', cursive;
@@ -73,13 +73,13 @@
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
             color: #fff;
-            width: 70%;
+            width: 80%;
             font-family: 'Uncial Antiqua', cursive;
         }
 
         #calendar h2 {
             margin: 0;
-            font-size: 20px;
+            font-size: 30px;
         }
 
         .calendar-header {
@@ -171,6 +171,12 @@
             color: #fff;
         }
 
+        #articles h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            font-family: 'Uncial Antiqua', cursive;
+        }
+
         .article {
             margin-bottom: 20px;
             padding: 15px;
@@ -259,14 +265,6 @@
             color: #f39c12;
         }
 
-        /* Nowe style dla nagłówka artykułów */
-        #articles h2 {
-            font-size: 30px; /* Zwiększenie rozmiaru czcionki nagłówka */
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 6px #000;
-        }
     </style>
 </head>
 <body>
@@ -304,12 +302,8 @@
         </div>
 
         <div class="calendar-grid" id="days"></div>
-   
-    
-    
     </section>
 
-    <!-- Najnowsze artykuły -->
     <section id="articles">
         <h2>Najnowsze Artykuły</h2>
         <div class="article">
@@ -355,13 +349,70 @@
         </div>
         <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
         <div class="social-icons">
-            <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a>
-            <a href="https://www.pinterest.com" target="_blank" class="fab fa-pinterest"></a>
-            <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook"></a>
-            <a href="https://www.youtube.com" target="_blank" class="fab fa-youtube"></a>
-            <a href="mailto:example@example.com" target="_blank" class="fas fa-envelope"></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:example@mail.com"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
 
+    <script>
+        const monthNames = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        const holidays = {
+            2: { 21: 'Jare Święto' },
+            5: { 23: 'Noc Kupały' },
+            6: { 6: 'Święto Peruna' },
+            8: { 1: 'Zakończenie Żniw' }
+        };
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        const monthYearElement = document.getElementById('month-year');
+        const daysElement = document.getElementById('days');
+
+        function generateCalendar(month, year) {
+            monthYearElement.textContent = `${monthNames[month]} ${year}`;
+            daysElement.innerHTML = '';
+            const totalDays = daysInMonth[month];
+            
+            for (let i = 1; i <= totalDays; i++) {
+                const day = document.createElement('div');
+                day.classList.add('calendar-day');
+                day.textContent = i;
+
+                // Mark weekends
+                if (new Date(year, month, i).getDay() === 0 || new Date(year, month, i).getDay() === 6) {
+                    day.classList.add('weekend');
+                }
+
+                // Mark holidays
+                if (holidays[month + 1] && holidays[month + 1][i]) {
+                    day.classList.add('holiday');
+                    const holidayBox = document.createElement('div');
+                    holidayBox.classList.add('holiday-box');
+                    holidayBox.textContent = holidays[month + 1][i];
+                    day.appendChild(holidayBox);
+                }
+
+                daysElement.appendChild(day);
+            }
+        }
+
+        generateCalendar(currentMonth, currentYear);
+
+        document.getElementById('prev-month').addEventListener('click', () => {
+            currentMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+            generateCalendar(currentMonth, currentYear);
+        });
+
+        document.getElementById('next-month').addEventListener('click', () => {
+            currentMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+            generateCalendar(currentMonth, currentYear);
+        });
+    </script>
 </body>
 </html>
