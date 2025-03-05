@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            background: url('pole.jpg') no-repeat center center fixed;
+            background: url('Z:/Strona/pole.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             font-family: 'Uncial Antiqua', cursive;
@@ -298,7 +298,9 @@
         <div class="calendar-grid" id="days"></div>
     </section>
 
+    <!-- Najnowsze artykuły -->
     <section id="articles">
+        <h2>Najnowsze Artykuły</h2>
         <div class="article">
             <h3>Bitwa pod Cedynią</h3>
             <p>Bitwa pod Cedynią odbyła się w 972 roku i była jednym z ważniejszych starć w historii Polski. Przeciwko wojskom niemieckim, dowodzonym przez Ottona I, stanął książę Mieszko I, który zdołał zwyciężyć, co miało kluczowe znaczenie dla utrzymania niepodległości Polski w czasach wczesnośredniowiecznych.</p>
@@ -355,10 +357,11 @@
         const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
         const holidays = {
-            2: { 21: 'Jare Święto' },
-            5: { 23: 'Noc Kupały' },
-            6: { 6: 'Święto Peruna' },
-            8: { 1: 'Zakończenie Żniw' }
+            1: {1: "Nowy Rok"},
+            5: {1: "Święto Pracy", 3: "Święto Konstytucji"},
+            8: {15: "Wniebowzięcie Najświętszej Maryi Panny"},
+            11: {1: "Wszystkich Świętych", 11: "Narodowe Święto Niepodległości"},
+            12: {25: "Boże Narodzenie"}
         };
 
         let currentMonth = new Date().getMonth();
