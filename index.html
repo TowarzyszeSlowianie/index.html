@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Towarzysze Słowianie</title>
     <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <!-- Link do Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
@@ -21,7 +22,7 @@
         }
 
         header {
-            background: rgba(17, 17, 17, 0.7);
+            background: rgba(17, 17, 17, 0.7); /* Semi-transparent background */
             padding: 20px;
             text-align: center;
             border-bottom: 5px solid #333;
@@ -38,8 +39,33 @@
             margin: 0;
         }
 
+        #theme-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .theme {
+            background: rgba(34, 34, 34, 0.7); /* Semi-transparent background */
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            font-size: 22px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .theme:hover {
+            background-color: #444;
+            transform: scale(1.1);
+        }
+
         #calendar {
-            background: rgba(17, 17, 17, 0.7);
+            background: rgba(17, 17, 17, 0.7); /* Semi-transparent background */
             padding: 20px;
             border: 3px solid #333;
             margin: 20px 0;
@@ -47,7 +73,7 @@
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
             color: #fff;
-            width: 70%;
+            width: 80%;
             font-family: 'Uncial Antiqua', cursive;
         }
 
@@ -137,6 +163,110 @@
         .calendar-day.holiday:hover .holiday-box {
             display: block;
         }
+
+        #articles {
+            margin-top: 30px;
+            width: 80%;
+            text-align: center;
+            color: #fff;
+        }
+
+        .article {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #222;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .article:hover {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+
+        .article h3 {
+            font-size: 24px;
+        }
+
+        .article p {
+            font-size: 16px;
+        }
+
+        #characters {
+            margin-top: 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .characters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .character {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .character h4 {
+            font-size: 20px;
+        }
+
+        .character p {
+            font-size: 14px;
+        }
+
+        /* Social media icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            font-size: 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f39c12;
+        }
+
+        .footer-links {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Nowe style dla nagłówka artykułów */
+        #articles h2 {
+            font-size: 40px; /* Zwiększenie rozmiaru czcionki nagłówka */
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px #000;
+        }
     </style>
 </head>
 <body>
@@ -144,6 +274,15 @@
     <header>
         <h1>Towarzysze Słowianie</h1>
     </header>
+
+    <div id="theme-container">
+        <a href="bitwy.html" class="theme">Historia</a>
+        <a href="bitwy.html" class="theme">Mitologia</a>
+        <a href="bitwy.html" class="theme">Obrzędy</a>
+        <a href="bitwy.html" class="theme">Rzemiosło</a>
+        <a href="bitwy.html" class="theme">Bitwy</a>
+        <a href="bitwy.html" class="theme">Postacie</a>
+    </div>
 
     <section id="calendar">
         <h2>Kalendarz Wydarzeń</h2>
@@ -166,6 +305,60 @@
 
         <div class="calendar-grid" id="days"></div>
     </section>
+
+    <!-- Najnowsze artykuły -->
+    <section id="articles">
+        <h2>Najnowsze Artykuły</h2>
+        <div class="article">
+            <h3>Bitwa pod Cedynią</h3>
+            <p>Bitwa pod Cedynią odbyła się w 972 roku i była jednym z ważniejszych starć w historii Polski. Przeciwko wojskom niemieckim, dowodzonym przez Ottona I, stanął książę Mieszko I, który zdołał zwyciężyć, co miało kluczowe znaczenie dla utrzymania niepodległości Polski w czasach wczesnośredniowiecznych.</p>
+        </div>
+        <div class="article">
+            <h3>Bitwa pod Grunwaldem</h3>
+            <p>Bitwa pod Grunwaldem miała miejsce w 1410 roku. Była jednym z największych starć średniowiecznej Europy, w którym połączone siły polsko-litewskie pokonały Krzyżaków. Bitwa miała ogromne znaczenie strategiczne i polityczne dla Polski i Litwy, dając im przewagę nad zakonem krzyżackim.</p>
+        </div>
+        <div class="article">
+            <h3>Bitwa pod Wiedniem</h3>
+            <p>Bitwa pod Wiedniem miała miejsce w 1683 roku. Była kluczowym momentem w historii Europy, kiedy to armia polska pod dowództwem Jana III Sobieskiego pokonała wojska Imperium Osmańskiego, ratując Wiedeń i zatrzymując rozprzestrzenianie się turkijskiej dominacji w Europie Środkowej.</p>
+        </div>
+    </section>
+
+    <section id="characters">
+        <h2>Postacie</h2>
+
+        <div class="characters">
+            <div class="character">
+                <h4>Mieszko I</h4>
+                <p>Pierwszy historyczny władca Polski, który przyjął chrzest w 966 roku, ustanawiając państwo polskie jako chrześcijańskie.</p>
+            </div>
+            <div class="character">
+                <h4>Perun</h4>
+                <p>Bóg piorunów i wojny, jeden z najważniejszych bogów słowiańskich, symbolizujący siłę i męstwo.</p>
+            </div>
+            <div class="character">
+                <h4>Veles</h4>
+                <p>Bóg zaświatów, magii, zwierząt i obfitości. Często przedstawiany jako przeciwnik Peruna.</p>
+            </div>
+            <div class="character">
+                <h4>Jan III Sobieski</h4>
+                <p>Król Polski, bohater bitwy pod Wiedniem, znany z mężnego dowodzenia i obrony Europy przed Imperium Osmańskim.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="regulamin.html">Regulamin</a> | <a href="privacy.html">Polityka Prywatności</a>
+        </div>
+        <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a>
+            <a href="https://www.pinterest.com" target="_blank" class="fab fa-pinterest"></a>
+            <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook"></a>
+            <a href="https://www.youtube.com" target="_blank" class="fab fa-youtube"></a>
+            <a href="mailto:example@example.com" target="_blank" class="fas fa-envelope"></a>
+        </div>
+    </footer>
 
 </body>
 </html>
