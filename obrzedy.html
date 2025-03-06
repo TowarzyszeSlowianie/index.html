@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Towarzysze Słowianie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('pole.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Uncial Antiqua', cursive;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
+        header {
+            background: rgba(17, 17, 17, 0.7); /* Semi-transparent background */
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: 48px;
+            text-shadow: 3px 3px 6px #000;
+            letter-spacing: 2px;
+            font-family: 'Uncial Antiqua', cursive;
+            color: #fff;
+            margin: 0;
+        }
+
+        #bitwa-container {
+            margin-top: 40px;
+            width: 80%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-box {
+            padding: 12px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        #bitwa-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 20px;
+            background-color: rgba(34, 34, 34, 0.8);
+            margin: 10px 0;
+            border-radius: 10px;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #444;
+            transform: translateY(-5px);
+        }
+
+        .bitwa-info {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #bbb;
+        }
+
+        /* Ustalenie wyglądu dla responsywności */
+        @media (max-width: 768px) {
+            .search-box {
+                width: 80%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Towarzysze Słowianie</h1>
+    </header>
+
+    <div id="bitwa-container">
+        <h2>Bitwy</h2>
+        <input type="text" id="bitwa-search" placeholder="Wyszukaj bitwę..." class="search-box" oninput="searchList('bitwa')">
+        <ul id="bitwa-list">
+            <li>
+                Bitwa pod Cedynią (972 r.)
+                <div class="bitwa-info">Wielka bitwa między Polanami a Niemcami, która zakończyła się zwycięstwem Polan.</div>
+            </li>
+            <li>
+                Bitwa pod Grunwaldem (1410 r.)
+                <div class="bitwa-info">Jedna z największych bitew średniowiecznej Europy, w której wojska polsko-litewskie pokonały Krzyżaków.</div>
+            </li>
+            <li>
+                Bitwa pod Wiedniem (1683 r.)
+                <div class="bitwa-info">Decydująca bitwa, w której armia polska pod wodzą Jana III Sobieskiego rozgromiła armię turecką.</div>
+            </li>
+            <li>
+                Bitwa pod Lubiszewem (1395 r.)
+                <div class="bitwa-info">Starcie między rycerstwem polskim i zakonem krzyżackim, mające na celu utrzymanie władzy w regionie.</div>
+            </li>
+            <li>
+                Bitwa pod Płowcami (1331 r.)
+                <div class="bitwa-info">Bitwa pomiędzy Polską a Krzyżakami, w której Polacy odnieśli zwycięstwo.</div>
+            </li>
+            <li>
+                Bitwa pod Tannenbergiem (1410 r.)
+                <div class="bitwa-info">Jedno z kluczowych starć w wojnie z Zakonem Krzyżackim, które zakończyło się jego klęską.</div>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Towarzysze Słowianie. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        function searchList(category) {
+            const input = document.getElementById(category + '-search').value.toLowerCase();
+            const list = document.getElementById(category + '-list');
+            const items = list.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                if (item.textContent.toLowerCase().includes(input)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
