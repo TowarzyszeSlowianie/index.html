@@ -13,6 +13,7 @@
             font-family: 'Uncial Antiqua', cursive;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -27,69 +28,67 @@
             width: 100%;
         }
 
-        header h1 {
+        header h1 a {
             font-size: 48px;
             text-shadow: 3px 3px 6px #000;
             letter-spacing: 2px;
+            font-family: 'Uncial Antiqua', cursive;
+            color: #fff;
+            margin: 0;
+            text-decoration: none;
         }
 
-        .article-container {
+        #article-container {
             margin-top: 40px;
             width: 80%;
+            text-align: left;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
-        .article-container img {
+        #article-container img {
             width: 100%;
-            max-height: 500px;
-            object-fit: cover;
+            height: auto;
             border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        .article-container h2 {
-            font-size: 36px;
-            margin: 20px 0;
-        }
-
-        .article-container p {
+        #article-container p {
             font-size: 20px;
             line-height: 1.6;
             margin-bottom: 20px;
         }
 
         footer {
-            margin-top: 40px;
+            margin-top: auto;
             padding: 20px;
             background: rgba(17, 17, 17, 0.7);
-            width: 100%;
             text-align: center;
             border-top: 5px solid #333;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            color: #bbb;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1><a href="index.html" style="text-decoration: none; color: inherit; cursor: pointer;">Towarzysze Słowianie</a></h1>
+    <h1><a href="index.html">Towarzysze Słowianie</a></h1>
 </header>
 
-<div class="article-container">
-    <img src="muncimir.jpg" alt="Muncimir - Władca Słowian">
-    <h2>Muncimir: Ostatni Pogański Władca</h2>
-    <p>
-        Msadasdsda.
-    </p>
-    <p>
-        Jego panowanie, choć krótkie, odcisnęło trwały ślad w historii. Podczas jego rządów powstały liczne świątynie poświęcone Perunowi 
-        i Swarogowi, a ludność odzyskała wolność wyznania. Muncimir stał się symbolem oporu wobec narzuconej religii i walki o niezależność kulturową.
-    </p>
-    <p>
-        Po jego śmierci Polska ponownie przyjęła chrześcijaństwo, ale pamięć o Muncimirze przetrwała w ludowych podaniach i legendach, 
-        inspirując kolejne pokolenia do odkrywania własnych korzeni.
-    </p>
+<div id="article-container">
+    <h2>Muncimir – Książe Serbski</h2>
+    <img src="Muncimir.jpg" alt="Muncimir">
+    <p>Muncimir, ostatni historyczny władca Polski, który odrzucił chrzest w 1038 roku, stał się symbolem oporu wobec chrystianizacji. Jego rządy były czasem wielkich przemian, kiedy społeczeństwo polskie próbowało odnaleźć równowagę między tradycyjnymi wierzeniami a naciskami zewnętrznymi.</p>
+    <p>Pod jego panowaniem, świątynie poświęcone dawnym bogom znów ożyły, a rytuały przodków powróciły do codziennego życia ludu. Muncimir wierzył, że tożsamość narodu tkwi w jego duchowych korzeniach, dlatego wspierał lokalnych kapłanów i starał się odbudować zniszczone miejsca kultu.</p>
+    <p>Jego postać owiana jest legendami – jedni widzieli w nim zbawcę kultury słowiańskiej, inni tyrana, który nie chciał iść z duchem czasu. Jednak niezależnie od opinii, Muncimir pozostaje ważnym symbolem dla tych, którzy szukają swoich korzeni i chcą zrozumieć duchową przeszłość Polski.</p>
 </div>
 
 <footer>
