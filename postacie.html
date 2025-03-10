@@ -17,7 +17,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
 
         header {
@@ -27,6 +26,10 @@
             border-bottom: 5px solid #333;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
         header h1 {
@@ -38,7 +41,7 @@
         }
 
         #bitwa-container {
-            margin-top: 40px;
+            margin-top: 120px;
             width: 80%;
             text-align: center;
             background-color: rgba(0, 0, 0, 0.7);
@@ -118,14 +121,14 @@
 </header>
 
 <div id="bitwa-container">
-    <h2>Historia</h2>
+    <h2>Postacie</h2>
     <input type="text" id="bitwa-search" placeholder="Wyszukaj bitwę..." class="search-box" oninput="searchList('bitwa')">
     <ul id="bitwa-list">
         <li onclick="window.open('cedynia.html', '_blank')">
             <img src="cedynia.jpg" alt="Bitwa pod Cedynią">
             <div>
-                Bitwa pod Cedynią (972 r.)
-                <div class="bitwa-info">Wielka bitwa między Polanami a Niemcami, która zakończyła się zwycięstwem Polan.</div>
+                Muncimir (ok. 855-891)
+                <div class="bitwa-info">Książe Serbski, panujący w latach ok. 855-891. Za jego pośrednictwem Serbia przyjeła chrzest.</div>
             </div>
         </li>
         <li onclick="window.open('grunwald.html', '_blank')">
