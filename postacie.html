@@ -121,26 +121,29 @@
     <h2>Postacie</h2>
     <input type="text" id="bitwa-search" placeholder="Wyszukaj bitwę..." class="search-box" oninput="searchList('bitwa')">
     <ul id="bitwa-list">
-        <li onclick="window.open('cedynia.html', '_blank')">
-            <img src="cedynia.jpg" alt="Bitwa pod Cedynią">
+        <li onclick="window.open('muncimir.html', '_blank')">
+            <img src="Muncimir.jpg" alt="Muncimir">
             <div>
                 Muncimir (ok. 855-891)
                 <div class="bitwa-info">Książe Serbski, panujący w latach ok. 855-891. Za jego pośrednictwem Serbia przyjeła chrzest.</div>
-            </div>
-        </li>
-        <li onclick="window.open('grunwald.html', '_blank')">
-            <img src="grunwald.jpg" alt="Bitwa pod Grunwaldem">
-            <div>
-                Bitwa pod Grunwaldem (1410 r.)
-                <div class="bitwa-info">Jedna z największych bitew średniowiecznej Europy, w której wojska polsko-litewskie pokonały Krzyżaków.</div>
             </div>
         </li>
     </ul>
 </div>
 
 <footer>
-    <p>&copy; 2025 Towarzysze Słowianie. Wszelkie prawa zastrzeżone.</p>
-</footer>
+        <div class="footer-links">
+            <a href="regulamin.html">Regulamin</a> | <a href="privacy.html">Polityka Prywatności</a>
+        </div>
+        <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+            <a href="https://www.facebook.com/share/1BpoQASCv1/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:towarzyszeslowianie@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
 
 <script>
     function searchList(category) {
