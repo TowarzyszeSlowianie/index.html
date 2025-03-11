@@ -19,7 +19,7 @@
             align-items: center;
         }
 
-        header {
+         header {
             background: rgba(17, 17, 17, 0.7); /* Semi-transparent background */
             padding: 20px;
             text-align: center;
@@ -38,7 +38,7 @@
         }
 
         #bitwa-container {
-            margin-top: 40px;
+            margin-top: 120px;
             width: 80%;
             text-align: center;
             background-color: rgba(0, 0, 0, 0.7);
@@ -66,6 +66,8 @@
         }
 
         li {
+            display: flex;
+            align-items: center;
             padding: 20px;
             background-color: rgba(34, 34, 34, 0.8);
             margin: 10px 0;
@@ -73,6 +75,13 @@
             color: #fff;
             transition: background-color 0.3s, transform 0.3s;
             cursor: pointer;
+        }
+
+        li img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
         }
 
         li:hover {
@@ -86,72 +95,71 @@
             color: #bbb;
         }
 
-            
         @media (max-width: 768px) {
             .search-box {
                 width: 80%;
             }
-        }
 
+            li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            li img {
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1><a href="index.html" style="text-decoration: none; color: inherit; cursor: pointer;">Towarzysze Słowianie</a></h1>
-    </header>
+<header>
+    <h1><a href="index.html" style="text-decoration: none; color: inherit; cursor: pointer;">Towarzysze Słowianie</a></h1>
+</header>
 
-    <div id="bitwa-container">
-        <h2>Historia</h2>
-        <input type="text" id="bitwa-search" placeholder="Wyszukaj bitwę..." class="search-box" oninput="searchList('bitwa')">
-        <ul id="bitwa-list">
-            <li>
-                Bitwa pod Cedynią (972 r.)
-                <div class="bitwa-info">Wielka bitwa między Polanami a Niemcami, która zakończyła się zwycięstwem Polan.</div>
-            </li>
-            <li>
-                Bitwa pod Grunwaldem (1410 r.)
-                <div class="bitwa-info">Jedna z największych bitew średniowiecznej Europy, w której wojska polsko-litewskie pokonały Krzyżaków.</div>
-            </li>
-            <li>
-                Bitwa pod Wiedniem (1683 r.)
-                <div class="bitwa-info">Decydująca bitwa, w której armia polska pod wodzą Jana III Sobieskiego rozgromiła armię turecką.</div>
-            </li>
-            <li>
-                Bitwa pod Lubiszewem (1395 r.)
-                <div class="bitwa-info">Starcie między rycerstwem polskim i zakonem krzyżackim, mające na celu utrzymanie władzy w regionie.</div>
-            </li>
-            <li>
-                Bitwa pod Płowcami (1331 r.)
-                <div class="bitwa-info">Bitwa pomiędzy Polską a Krzyżakami, w której Polacy odnieśli zwycięstwo.</div>
-            </li>
-            <li>
-                Bitwa pod Tannenbergiem (1410 r.)
-                <div class="bitwa-info">Jedno z kluczowych starć w wojnie z Zakonem Krzyżackim, które zakończyło się jego klęską.</div>
-            </li>
-        </ul>
-    </div>
+<div id="bitwa-container">
+    <h2>Historia</h2>
+    <input type="text" id="bitwa-search" placeholder="Wyszukaj bitwę..." class="search-box" oninput="searchList('bitwa')">
+    <ul id="bitwa-list">
+        <li onclick="window.open('muncimir.html', '_blank')">
+            <div>
+                Kim Byli słowianie?
+                <div class="bitwa-info">Skąd przyszli? Gdzie zawędrowali? W co wierzyli? W tym krótkim, lecz wyczerpującym artykule, znajdziesz większość podstawowych informacji.</div>
+            </div>
+        </li>
+    </ul>
+</div>
 
-    <footer>
-        <p>&copy; 2025 Towarzysze Słowianie. Wszelkie prawa zastrzeżone.</p>
+<footer>
+        <div class="footer-links">
+            <a href="regulamin.html">Regulamin</a> | <a href="privacy.html">Polityka Prywatności</a>
+        </div>
+        <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+            <a href="https://www.facebook.com/share/1BpoQASCv1/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:towarzyszeslowianie@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
     </footer>
 
-    <script>
-        function searchList(category) {
-            const input = document.getElementById(category + '-search').value.toLowerCase();
-            const list = document.getElementById(category + '-list');
-            const items = list.getElementsByTagName('li');
+<script>
+    function searchList(category) {
+        const input = document.getElementById(category + '-search').value.toLowerCase();
+        const list = document.getElementById(category + '-list');
+        const items = list.getElementsByTagName('li');
 
-            for (let i = 0; i < items.length; i++) {
-                const item = items[i];
-                if (item.textContent.toLowerCase().includes(input)) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            if (item.textContent.toLowerCase().includes(input)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
             }
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>
