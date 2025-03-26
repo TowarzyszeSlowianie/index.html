@@ -19,8 +19,8 @@
             align-items: center;
         }
 
-         header {
-            background: rgba(17, 17, 17, 0.7); /* Semi-transparent background */
+        header {
+            background: rgba(17, 17, 17, 0.7);
             padding: 20px;
             text-align: center;
             border-bottom: 5px solid #333;
@@ -32,7 +32,6 @@
             font-size: 48px;
             text-shadow: 3px 3px 6px #000;
             letter-spacing: 2px;
-            font-family: 'Uncial Antiqua', cursive;
             color: #fff;
             margin: 0;
         }
@@ -77,13 +76,6 @@
             cursor: pointer;
         }
 
-        li img {
-            max-width: 100px;
-            max-height: 100px;
-            margin-right: 20px;
-            border-radius: 5px;
-        }
-
         li:hover {
             background-color: #444;
             transform: translateY(-5px);
@@ -95,37 +87,57 @@
             color: #bbb;
         }
 
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            font-size: 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f39c12;
+        }
+
+        .footer-links {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background: rgba(17, 17, 17, 0.8);
+            margin-top: auto;
+        }
+
         @media (max-width: 768px) {
             .search-box {
                 width: 80%;
             }
-
             li {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
             }
-
-            li img {
-                margin-bottom: 10px;
-            }
-
-           .footer-links {
-                text-align: center;
-                margin: 20px 0;
-            }
-
-            .footer-links a {
-                color: #fff;
-                text-decoration: none;
-                font-size: 14px;
-                margin: 0 10px;
-            }
-
-            .footer-links a:hover {
-                color: #f39c12;
-            }         
-
-            
+        }
     </style>
 </head>
 <body>
@@ -141,14 +153,14 @@
         <li onclick="window.open('muncimir.html', '_blank')">
             <img src="Muncimir.jpg" alt="Muncimir">
             <div>
-                Muncimir (ok. 855-891)
+                <strong>Muncimir (ok. 855-891)</strong>
                 <div class="bitwa-info">Książe Serbski, panujący w latach ok. 855-891. Za jego pośrednictwem Serbia przyjęła chrzest.</div>
             </div>
         </li>
         <li onclick="window.open('skanderbeg.html', '_blank')">
             <img src="Gregrj_k.jpg" alt="Gregori_Dupa_Boli">
             <div>
-                Skanderbeg (1405 - 1468)
+                <strong>Skanderbeg (1405 - 1468)</strong>
                 <div class="bitwa-info">Bohater narodowy Albani, zasłynął w walce z Imperium Osmańskim stając się symbolem oporu przeciw temu państwu.</div>
             </div>
         </li>
@@ -156,18 +168,18 @@
 </div>
 
 <footer>
-        <div class="footer-links">
-            <a href="regulamin.html">Regulamin</a> | <a href="privacy.html">Polityka Prywatności</a>
-        </div>
-        <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
-        <div class="social-icons">
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
-            <a href="https://www.facebook.com/share/1BpoQASCv1/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="mailto:towarzyszeslowianie@gmail.com"><i class="fas fa-envelope"></i></a>
-        </div>
-    </footer>
+    <div class="footer-links">
+        <a href="regulamin.html">Regulamin</a> | <a href="privacy.html">Polityka Prywatności</a>
+    </div>
+    <p>&copy; 2025 Towarzysze Słowianie. Wszystkie prawa zastrzeżone.</p>
+    <div class="social-icons">
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+        <a href="https://www.facebook.com/share/1BpoQASCv1/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="mailto:towarzyszeslowianie@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+</footer>
 
 <script>
     function searchList(category) {
