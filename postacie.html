@@ -32,6 +32,7 @@
             font-size: 48px;
             text-shadow: 3px 3px 6px #000;
             letter-spacing: 2px;
+            font-family: 'Uncial Antiqua', cursive;
             color: #fff;
             margin: 0;
         }
@@ -76,6 +77,13 @@
             cursor: pointer;
         }
 
+        li img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
         li:hover {
             background-color: #444;
             transform: translateY(-5px);
@@ -87,27 +95,18 @@
             color: #bbb;
         }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .social-icons a {
-            font-size: 30px;
+        footer {
+            background: rgba(17, 17, 17, 0.9);
             color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: #f39c12;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         .footer-links {
-            text-align: center;
-            margin: 20px 0;
+            margin-bottom: 20px;
         }
 
         .footer-links a {
@@ -121,23 +120,32 @@
             color: #f39c12;
         }
 
-        footer {
-            width: 100%;
-            text-align: center;
-            padding: 20px;
-            background: rgba(17, 17, 17, 0.8);
-            margin-top: auto;
+        .social-icons a {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #f39c12;
         }
 
         @media (max-width: 768px) {
             .search-box {
                 width: 80%;
             }
+
             li {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
+            }
+
+            li img {
+                margin-bottom: 10px;
             }
         }
+
     </style>
 </head>
 <body>
@@ -148,20 +156,20 @@
 
 <div id="bitwa-container">
     <h2>Postacie</h2>
-    <input type="text" id="bitwa-search" placeholder="Wyszukaj bitwę..." class="search-box" oninput="searchList('bitwa')">
+    <input type="text" id="bitwa-search" placeholder="Wyszukaj postać..." class="search-box" oninput="searchList('bitwa')">
     <ul id="bitwa-list">
         <li onclick="window.open('muncimir.html', '_blank')">
             <img src="Muncimir.jpg" alt="Muncimir">
             <div>
-                <strong>Muncimir (ok. 855-891)</strong>
+                Muncimir (ok. 855-891)
                 <div class="bitwa-info">Książe Serbski, panujący w latach ok. 855-891. Za jego pośrednictwem Serbia przyjęła chrzest.</div>
             </div>
         </li>
         <li onclick="window.open('skanderbeg.html', '_blank')">
-            <img src="Gregrj_k.jpg" alt="Gregori_Dupa_Boli">
+            <img src="Gregrj_k.jpg" alt="Skanderbeg">
             <div>
-                <strong>Skanderbeg (1405 - 1468)</strong>
-                <div class="bitwa-info">Bohater narodowy Albani, zasłynął w walce z Imperium Osmańskim stając się symbolem oporu przeciw temu państwu.</div>
+                Skanderbeg (1405 - 1468)
+                <div class="bitwa-info">Bohater narodowy Albanii, zasłynął w walce z Imperium Osmańskim stając się symbolem oporu przeciw temu państwu.</div>
             </div>
         </li>
     </ul>
